@@ -10,8 +10,7 @@ function AuthProvider({ children }){
   const [loadingAuth, setLoadingAuth] = useState(false); 
 
   const navigation = useNavigation();
-
-
+  //funcao para cadastro de usuarios
   async function signUp(email, password, nome){
     setLoadingAuth(true);
     try{
@@ -29,9 +28,38 @@ function AuthProvider({ children }){
       setLoadingAuth(false);
     }
   }
+  //funcao para logar com um determinado usuario
+ 
+  async function signIn(email,password){
+    setLoadingAuth(true);
+    try{
+      const response = await api.post('/login',{
+        email: email,
+        password: password
+      })
+      const {id, name, token} = response.data;
+      const data = {
+        id,
+        name,
+        token,
+        email,
+      };
+      api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+      setUser({
+        id,
+        name,
+        email,
+      })
+      setLoadingAuth(false);
+    }catch(err){
+      console.log("ops ocorreu um erro", err)
+      setLoadingAuth(false);
+    }
+  }
 
   return(
-    <AuthContext.Provider value={{signed: !!user, user, signUp , loadingAuth}}>
+    <AuthContext.Provider value={{signed: !!user, user, signUp ,signIn, loadingAuth}}>
       {children}
     </AuthContext.Provider>
   )
