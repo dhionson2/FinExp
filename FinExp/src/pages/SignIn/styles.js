@@ -12,7 +12,7 @@ export const Container = styled.KeyboardAvoidingView`
 `;
 
 export const Logo = styled.Image`
-  margin-bottom: 25px;
+  margin-bottom: 190px;
 `;
 
 export const AreaInput = styled.View`
@@ -26,7 +26,7 @@ export const Input = styled.TextInput`
   padding: 10px;
   border-radius: 8px;
   color: #121212;
-  margin-bottom: 15px;
+  margin-bottom: 55px;
 `;
 
 
