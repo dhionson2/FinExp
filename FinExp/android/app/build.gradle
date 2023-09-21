@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.finexp"
+    namespace "com.newappfin"
     defaultConfig {
-        applicationId "com.finexp"
+        applicationId "com.newappfin"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
