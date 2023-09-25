@@ -18,7 +18,7 @@ import { format } from 'date-fns';
 import { useIsFocused } from '@react-navigation/native';
 import BalanceItem from '../../components/BalanceItem';
 import HistoricoList from '../../components/HistoricoList';
-import CalendarModal from '../../components/CalendarModal';
+import CalendarModal from '../../components/CalendarModal'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -36,7 +36,10 @@ export default function Home(){
     let isActive = true;
 
     async function getMovements(){
-      let dateFormated = format(dateMovements, 'dd/MM/yyyy');
+
+      let date = new Date(dateMovements)
+      let onlyDate = date.valueOf() + date.getTimezoneOffset() * 60 * 1000;
+      let dateFormated = format(onlyDate, 'dd/MM/yyyy');
 
       const receives = await api.get('/receives', {
         params:{
